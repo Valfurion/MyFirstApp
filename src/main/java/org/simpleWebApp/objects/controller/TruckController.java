@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+
+//Valfurion 
 @RestController
 @RequestMapping("/trucks")
 public class TruckController {
