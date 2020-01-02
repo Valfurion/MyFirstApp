@@ -25,7 +25,7 @@ public class TruckRepository {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private EngineRepository engineRepository;
-
+//Отображение всех грузовиков
     public List<Truck> findAll() {
         String sql = "select * from auto.truck";
         System.out.println(sql);
@@ -38,7 +38,7 @@ public class TruckRepository {
         return trucks;
 
     }
-
+//Отображение грузовиков по их Id
     public Truck findById(Long number) {
         String sql = "select * from auto.truck where truck_id = (" + number.toString() + ")";
         System.out.println(sql);
@@ -47,7 +47,7 @@ public class TruckRepository {
         truck.setEngine(engine);
         return truck;
     }
-
+//Создание грузовика
     public Truck createTruck(Truck truck) {
         Engine engine = getOrCreateEngine(truck);
         truck.setEngine(engine);
@@ -78,7 +78,7 @@ public class TruckRepository {
         }
         return engine;
     }
-
+//Внесение изменений в грузовик
     public Truck changeTruck(Truck truck) {
         Engine engine = getOrCreateEngine(truck);
         truck.setEngine(engine);
@@ -95,7 +95,7 @@ public class TruckRepository {
 
 
     }
-
+//Удаление грузовика по его Id
     public Boolean deleteTruck(Long number) {
         String sql = "delete from auto.truck where truck_id = ?";
         jdbcTemplate.update(psc -> {

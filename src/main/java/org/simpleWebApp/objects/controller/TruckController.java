@@ -9,7 +9,7 @@ import java.util.List;
 
 
 
-//Valfurion 
+//Valfurion
 @RestController
 @RequestMapping("/trucks")
 public class TruckController {
