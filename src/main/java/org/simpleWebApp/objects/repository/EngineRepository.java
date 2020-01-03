@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 @Repository
 public class EngineRepository {
@@ -43,6 +44,12 @@ public class EngineRepository {
         String sql = "select * from auto.engine where title = '" + title + "' and volume = '" + volume + "' ";
         Engine engn = jdbcTemplate.queryForObject(sql, new EngineMapper());
         return engn;
+    }
+
+    public List<Engine> findAll() {
+        String sql = "select * from auto.engine";
+        List<Engine> engine = jdbcTemplate.query(sql, new EngineMapper());
+        return engine;
     }
 
     private class EngineMapper implements RowMapper<Engine> {
