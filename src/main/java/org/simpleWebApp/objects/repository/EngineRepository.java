@@ -52,6 +52,13 @@ public class EngineRepository {
         return engine;
     }
 
+    public Engine getById(Long id) {
+        String sql = "select * from auto.engine where engine_id = " + id;
+        return jdbcTemplate.queryForObject(sql, new EngineMapper());
+
+    }
+
+
     private class EngineMapper implements RowMapper<Engine> {
 
         @Override
