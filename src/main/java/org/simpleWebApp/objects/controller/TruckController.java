@@ -21,10 +21,9 @@ public class TruckController {
         return truckRepository.findAll();
     }
 
-    @GetMapping("/get/{number}")
-    public Truck getById(@PathVariable Long number) {
-        Truck truck = truckRepository.findById(number);
-        return truck;
+    @GetMapping("/{id}")
+    public Truck getById(@PathVariable Long id) {
+        return truckRepository.findById(id);
     }
 
     @PostMapping
@@ -32,17 +31,17 @@ public class TruckController {
         return truckRepository.createTruck(truck);
     }
 
-    @PutMapping("/change/{number}")
-    public Truck changeTruck(@PathVariable Long number, @RequestBody Truck truck) {
-        truck.setVehicleId(number);
+    @PutMapping("/change/{id}")
+    public Truck changeTruck(@PathVariable Long id, @RequestBody Truck truck) {
+        truck.setVehicleId(id);
         return truckRepository.changeTruck(truck);
 
     }
 
-    @DeleteMapping("/{number}")
-    public Boolean deleteTruck(@PathVariable Long number) {
-        if (number == null) {
+    @DeleteMapping("/{id}")
+    public Boolean deleteTruck(@PathVariable Long id) {
+        if (id == null) {
             System.out.println("Отсутствует");}
-        return truckRepository.deleteTruck(number);
+        return truckRepository.deleteTruck(id);
     }
 }

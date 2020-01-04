@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/engine")
+@RequestMapping("/engines")
 public class EngineController {
     @Autowired
     private EngineRepository engineRepository;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public List<Engine> findAllEngines (){
-        return engineRepository.findAll();
+        return engineRepository.getAll();
     }
     @GetMapping("/{id}")
     public Engine engine (@PathVariable Long id){
-        return engineRepository.getById(id);
+        return engineRepository.findById(id);
     }
 }
