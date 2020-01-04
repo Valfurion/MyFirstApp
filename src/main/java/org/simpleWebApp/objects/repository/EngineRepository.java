@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 @Repository
 public class EngineRepository {
@@ -20,8 +21,7 @@ public class EngineRepository {
 
     public Engine findById(Long engineId) {
         String sql = "select * from auto.engine where engine_id= (" + engineId.toString() + ")";
-        Engine engn = jdbcTemplate.queryForObject(sql, new EngineMapper());
-        return engn;
+        return jdbcTemplate.queryForObject(sql, new EngineMapper());
     }
 
     public Engine create(Engine engine) {
@@ -41,9 +41,15 @@ public class EngineRepository {
 
     public Engine findByTitleAndVolume(String title, String volume) {
         String sql = "select * from auto.engine where title = '" + title + "' and volume = '" + volume + "' ";
-        Engine engn = jdbcTemplate.queryForObject(sql, new EngineMapper());
-        return engn;
+        return jdbcTemplate.queryForObject(sql, new EngineMapper());
     }
+
+    public List<Engine> findAll() {
+        String sql = "select * from auto.engine";
+        return jdbcTemplate.query(sql, new EngineMapper());
+    }
+
+
 
     private class EngineMapper implements RowMapper<Engine> {
 
