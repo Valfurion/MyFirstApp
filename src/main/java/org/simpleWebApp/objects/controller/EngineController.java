@@ -18,7 +18,7 @@ public class EngineController {
 
     @GetMapping
     public List<Engine> findAllEngines (){
-        return engineRepository.getAll();
+        return engineRepository.findAll();
     }
     @GetMapping("/{id}")
     public Engine engine (@PathVariable Long id){

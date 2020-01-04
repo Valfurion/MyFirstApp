@@ -44,7 +44,7 @@ public class EngineRepository {
         return jdbcTemplate.queryForObject(sql, new EngineMapper());
     }
 
-    public List<Engine> getAll() {
+    public List<Engine> findAll() {
         String sql = "select * from auto.engine";
         return jdbcTemplate.query(sql, new EngineMapper());
     }
